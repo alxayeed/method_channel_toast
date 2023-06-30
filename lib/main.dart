@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  MainApp({super.key});
+
+  var channel = const MethodChannel("toastChannel");
+
+  void showToast(){
+    channel.invokeMethod("showToast");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +23,7 @@ class MainApp extends StatelessWidget {
 
         body: Center(
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: showToast,
             child: const Text("Click me"),
           ),
         ),
