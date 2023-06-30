@@ -14,9 +14,11 @@ class MainActivity: FlutterActivity() {
         val channel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channelName);
 
         channel.setMethodCallHandler{ call, result ->
+            val args = call.arguments as Map<String, String>
+            val message = args["message"];
 
             if(call.method == "showToast"){
-                Toast.makeText(this, "Oye!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             }
         }
     }

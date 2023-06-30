@@ -11,7 +11,7 @@ class MainApp extends StatelessWidget {
   var channel = const MethodChannel("toastChannel");
 
   void showToast(){
-    channel.invokeMethod("showToast");
+    channel.invokeMethod("showToast", {"message": "Genie said Meow!"});
   }
 
   @override
@@ -24,7 +24,7 @@ class MainApp extends StatelessWidget {
         body: Center(
           child: ElevatedButton(
             onPressed: showToast,
-            child: const Text("Click me"),
+            child: const Text("Summon me"),
           ),
         ),
       ),
